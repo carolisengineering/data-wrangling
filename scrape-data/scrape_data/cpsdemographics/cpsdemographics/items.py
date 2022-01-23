@@ -9,4 +9,5 @@ import scrapy
 class CPSDemographicsItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
+    file_url = scrapy.Field()
     pass
