@@ -2,8 +2,9 @@ import scrapy
 import pandas as pd
 import os, os.path
 import csv
+import json
 
-FILE_PATH = 'cpsdemographics/files/'
+INPUT_FILE_PATH = 'cpsdemographics/files/'
 RACIAL_ETHNIC_PREFIX = 'demographics_racialethnic_'
 RACIAL_ETHNIC_CATEGORIES = [
 	'White',
@@ -86,18 +87,36 @@ def convert_many_racial_ethnic_csv_to_dict(file_directory):
 			and (extension == '.csv')):
 			convert_racial_ethnic_csv_to_dict(file_with_path, racial_categories)
 
-	print(racial_categories)
+	return(racial_categories)
+
+def make_serializable(dictionary):
+	list_dictionary = {}
+	for item in dictionary:
+		set_to_convert = dictionary[item]
+		set_list = []
+		for set_item in set_to_convert:
+			list_item = list(set_item)
+			set_list.append(list_item)
+		list_dictionary[item] = set_list
+	return list_dictionary
+
 
 
 
 def main():
 	print('this is a data wrangling script that could be named better.')
-	file_directory = os.listdir(FILE_PATH)
+	file_directory = os.listdir(INPUT_FILE_PATH)
 
 	# conversion only needs to be done once
 	# convert_many_xls_to_csv(file_directory, FILE_PATH)
 
-	convert_many_racial_ethnic_csv_to_dict(file_directory)
+	racial_category_dict = convert_many_racial_ethnic_csv_to_dict(file_directory)
+	serializable_racial_category_dict = make_serializable(racial_category_dict)
+	with open('racial_categories.json', 'w') as f:
+		racial_category_string = json.dumps(serializable_racial_category_dict)
+		f.write(racial_category_string)
+
+
 
 
 
