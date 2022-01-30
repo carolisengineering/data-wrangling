@@ -5,6 +5,7 @@ import csv
 import json
 
 INPUT_FILE_PATH = 'cpsdemographics/files/'
+OUTPUT_FILE_NAME = 'racial_categories.json'
 RACIAL_ETHNIC_PREFIX = 'demographics_racialethnic_'
 RACIAL_ETHNIC_CATEGORIES = [
 	'White',
@@ -112,7 +113,7 @@ def main():
 
 	racial_category_dict = convert_many_racial_ethnic_csv_to_dict(file_directory)
 	serializable_racial_category_dict = make_serializable(racial_category_dict)
-	with open('racial_categories.json', 'w') as f:
+	with open(OUTPUT_FILE_NAME, 'w') as f:
 		racial_category_string = json.dumps(serializable_racial_category_dict)
 		f.write(racial_category_string)
 
