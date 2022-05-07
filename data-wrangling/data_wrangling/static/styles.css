@@ -1,0 +1,16 @@
+.button.is-info {
+	background-color: #326771;
+}
+
+.button.is-info:hover {
+	background-color: #DA627D;
+}
+
+.hero.is-primary {
+	background-color: #93C6D6;
+}
+
+.hero.is-primary a:not(.button):not(.dropdown-item):not(.tag):hover {
+	background-color: #DEB841;
+}
+

@@ -1,29 +1,28 @@
 from data_wrangling import __version__
-#from data_wrangling import main
-
 
 def test_version():
-    assert __version__ == '0.1.0'
+    assert __version__ == '0.1.1'
 
 def test_index(test_client):
     resp = test_client.get('/')
     assert resp.status_code == 200
-    assert resp.text == 'Index'
+    assert b'data rodeo' in resp.data
+    assert b'a place to wrangle data' in resp.data
 
 def test_profile(test_client):
     resp = test_client.get('/profile')
     assert resp.status_code == 200
-    assert resp.text == 'Profile'
+    assert b'welcome!' in resp.data
 
 def test_login(test_client):
     resp = test_client.get('/login')
     assert resp.status_code == 200
-    assert resp.text == 'Login'
+    assert b'login here' in resp.data
 
 def test_signup(test_client):
     resp = test_client.get('/signup')
     assert resp.status_code == 200
-    assert resp.text == 'Signup'
+    assert b'sign up here' in resp.data
 
 def test_logout(test_client):
     resp = test_client.get('/logout')
