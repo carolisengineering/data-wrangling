@@ -1,4 +1,4 @@
-from data_wrangling import __version__
+from data_wrangling.data_wrangling import __version__
 
 def test_version():
     assert __version__ == '0.1.1'
@@ -15,16 +15,16 @@ def test_profile(test_client):
     assert b'welcome!' in resp.data
 
 def test_login(test_client):
-    resp = test_client.get('/login')
+    resp = test_client.get('/auth/login')
     assert resp.status_code == 200
     assert b'login here' in resp.data
 
 def test_signup(test_client):
-    resp = test_client.get('/signup')
+    resp = test_client.get('/auth/signup')
     assert resp.status_code == 200
     assert b'sign up here' in resp.data
 
 def test_logout(test_client):
-    resp = test_client.get('/logout')
+    resp = test_client.get('/auth/logout')
     assert resp.status_code == 200
     assert resp.text == 'Logout'

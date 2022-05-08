@@ -1,8 +1,9 @@
-import os
-import tempfile
-
 import pytest
-from data_wrangling import create_app, db
+import sys, os
+sys.path.append(os.path.join(os.path.dirname(__file__),os.pardir,"data_wrangling"))
+
+from data_wrangling.data_wrangling import create_app
+from db.db import db
 
 
 @pytest.fixture

@@ -3,7 +3,7 @@
 }
 
 .button.is-info:hover {
-	background-color: #DA627D;
+	background-color: #DEB841;
 }
 
 .hero.is-primary {
@@ -14,3 +14,6 @@
 	background-color: #DEB841;
 }
 
+.notification.is-danger {
+	background-color: #DA627D;
+}
