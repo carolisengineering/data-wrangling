@@ -1,5 +1,7 @@
 from flask import Blueprint, request, url_for, redirect, render_template, flash
+
 main = Blueprint('main', __name__, template_folder="templates/main")
+
 
 @main.route("/")
 def index():

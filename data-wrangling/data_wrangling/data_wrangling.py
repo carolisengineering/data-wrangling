@@ -1,6 +1,5 @@
 from flask import Flask
 
-# blueprint import
 from blueprints.main.views import main
 from blueprints.auth.views import auth
 
