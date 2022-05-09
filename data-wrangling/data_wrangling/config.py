@@ -15,4 +15,4 @@ class DevelopmentConfig(Config):
     ENV="development"
     DEVELOPMENT=True
     DEBUG=True
-    SQLALCHEMY_DATABASE_URI=f"postgresql://{DB_USERNAME}{DB_PASSWORD}@localhost:5432/{DB_NAME}"
+    SQLALCHEMY_DATABASE_URI=f"postgresql://{DB_USERNAME}:{DB_PASSWORD}@localhost:5432/{DB_NAME}"
