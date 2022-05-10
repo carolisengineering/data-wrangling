@@ -15,6 +15,11 @@ def test_user():
     return test_user
 
 @pytest.fixture
+def test_user_bad_password():
+    test_user_bad_password = Users(name='stacy', email='stacy@email.com', password='123456')
+    return test_user_bad_password
+
+@pytest.fixture
 def test_client(db_session):
     test_app = create_app()
     test_app.config['TESTING'] = True
