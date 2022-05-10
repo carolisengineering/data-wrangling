@@ -11,9 +11,11 @@ Flask-SQLAlchemy = "^2.5.1"
 Flask-WTF = "^1.0.1"
 Flask-Login = "^0.6.1"
 psycopg2-binary = "^2.9.3"
+psycopg = "^3.0.12"
+psycopg-c = "^3.0.12"
 
 [tool.poetry.dev-dependencies]
-pytest = "^5.2"
+pytest = "^6.2.5"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
