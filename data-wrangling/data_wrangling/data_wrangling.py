@@ -5,7 +5,6 @@ from blueprints.auth.views import auth
 
 from db.db import db
 
-__version__ = '0.1.1'
 
 def create_app():
     data_wrangling = Flask(__name__)
