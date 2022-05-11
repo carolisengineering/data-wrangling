@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, redirect, url_for, request, flash
+from flask_login import login_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from .models import Users
 from db.db import db
@@ -15,13 +16,15 @@ def login_post():
     email = request.form.get('email')
     password = request.form.get('password')
     remember = True if request.form.get('remember') else False
-    logged_in_user = Users.query.filter_by(email=email).first()
+    user_logging_in = Users.query.filter_by(email=email).first()
 
     # check if the user actually exists
     # take the user-supplied password, hash it, and compare it to the hashed password in the database
-    if not logged_in_user or not check_password_hash(logged_in_user.password, password):
+    if not user_logging_in or not check_password_hash(logged_in_user.password, password):
         flash('please check your login details and try again.')
         return redirect(url_for('auth.login'))
+    # if the above check passes, then we know the user has the right credentials
+    login_user(user_logging_in, remember=remember)
     return redirect(url_for('main.profile'))
 
 
