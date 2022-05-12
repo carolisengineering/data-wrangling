@@ -65,6 +65,7 @@ def test_login_existing_user(test_client, test_user, db_session):
     
     # after login, redirect to profile page
     assert resp.request.path == url_for('main.profile')
+    assert bytes(test_user.name, 'utf-8') in resp.data
 
 def test_login_existing_user_bad_password(test_client, test_user_bad_password, db_session):
     # existing user is already in db
