@@ -14,12 +14,12 @@ TEST_DB_URL = f'postgresql://{TEST_DB_USER}:{TEST_DB_PASSWORD}@localhost:5432/{T
 
 @pytest.fixture
 def test_user():
-    test_user = Users(name='stacy', email='stacy@email.com', password='password')
+    test_user = Users(id=1, name='stacy', email='stacy@email.com', password='password')
     return test_user
 
 @pytest.fixture
 def test_user_bad_password():
-    test_user_bad_password = Users(name='stacy', email='stacy@email.com', password='123456')
+    test_user_bad_password = Users(id=1, name='stacy', email='stacy@email.com', password='123456')
     return test_user_bad_password
 
 @pytest.fixture
