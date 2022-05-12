@@ -10,9 +10,9 @@ def test_index(test_client):
     assert b'a place to wrangle data' in resp.data
 
 def test_profile(test_client):
-    resp = test_client.get('/profile')
+    resp = test_client.get('/profile', follow_redirects=True)
     assert resp.status_code == 200
-    assert b'welcome!' in resp.data
+    assert b'login here' in resp.data
 
 def test_login(test_client):
     resp = test_client.get('/auth/login')
