@@ -7,7 +7,10 @@ from data_wrangling.data_wrangling import create_app
 from data_wrangling.blueprints.auth.models import Users
 from data_wrangling.db.db import db
 
-TEST_DB_URL = 'postgresql://test_user:test_password@localhost:5432/data_wrangling_test'
+TEST_DB_NAME = 'data_wrangling_test'
+TEST_DB_USER = 'test_user'
+TEST_DB_PASSWORD = 'test_password'
+TEST_DB_URL = f'postgresql://{TEST_DB_USER}:{TEST_DB_PASSWORD}@localhost:5432/{TEST_DB_NAME}'
 
 @pytest.fixture
 def test_user():
