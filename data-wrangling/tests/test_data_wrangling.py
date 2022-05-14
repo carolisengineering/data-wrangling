@@ -16,6 +16,7 @@ def test_profile(test_client):
     assert resp.status_code == 200
     assert resp.request.path == url_for('auth.login')
     assert b'login here' in resp.data
+    assert b'log in to access this page' in resp.data
 
 def test_login(test_client):
     resp = test_client.get('/auth/login')
