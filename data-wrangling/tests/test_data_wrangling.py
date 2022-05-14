@@ -1,3 +1,5 @@
+from flask import url_for
+
 from data_wrangling import __version__
 
 def test_version():
@@ -12,6 +14,7 @@ def test_index(test_client):
 def test_profile(test_client):
     resp = test_client.get('/profile', follow_redirects=True)
     assert resp.status_code == 200
+    assert resp.request.path == url_for('auth.login')
     assert b'login here' in resp.data
 
 def test_login(test_client):
@@ -25,6 +28,7 @@ def test_signup(test_client):
     assert b'sign up here' in resp.data
 
 def test_logout(test_client):
-    resp = test_client.get('/auth/logout')
+    resp = test_client.get('/auth/logout', follow_redirects=True)
     assert resp.status_code == 200
-    assert resp.text == 'Logout'
+    assert resp.request.path == url_for('auth.login')
+    assert b'login here' in resp.data
