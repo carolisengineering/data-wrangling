@@ -1,5 +1,4 @@
 from flask import url_for
-import psycopg
 
 from data_wrangling.blueprints.auth.models import Users
 
