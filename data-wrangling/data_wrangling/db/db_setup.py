@@ -1,5 +1,5 @@
 import os
-import psycopg2
+import psycopg
 
 
 DB_USERNAME = os.environ.get('DB_USERNAME')
@@ -8,7 +8,7 @@ DB_NAME = 'data_wrangling'
 
 
 def main():
-        conn = psycopg2.connect(
+        conn = psycopg.connect(
                 host="localhost",
                 database=DB_NAME,
                 user=DB_USERNAME,
