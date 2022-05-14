@@ -21,6 +21,9 @@ def test_signup_new_user(test_client, test_user, db_session):
     assert resp.status_code == 200
     # after signup, redirect to login page
     assert resp.request.path == url_for('auth.login')
+    assert b'login' in resp.data
+    assert b'signup' in resp.data
+    assert b'profile' not in resp.data
 
     # after signup, new user is in db
     new_user_after_post = query.filter(Users.email == test_user.email)
@@ -42,6 +45,9 @@ def test_signup_existing_user(test_client, test_user, db_session):
     }
     resp = test_client.post('/auth/signup', data=user_input_data, follow_redirects=True)
     assert resp.status_code == 200
+    assert b'login' in resp.data
+    assert b'signup' in resp.data
+    assert b'profile' not in resp.data
     
     # if the user already exists, stay on signup page and flash error message
     assert resp.request.path == url_for('auth.signup')
@@ -66,6 +72,9 @@ def test_login_existing_user(test_client, test_user, db_session):
     # after login, redirect to profile page
     assert resp.request.path == url_for('main.profile')
     assert bytes(test_user.name, 'utf-8') in resp.data
+    assert b'profile' in resp.data
+    assert b'login' not in resp.data
+    assert b'signup' not in resp.data
 
 def test_login_existing_user_bad_password(test_client, test_user_bad_password, db_session):
     # existing user is already in db
@@ -82,6 +91,10 @@ def test_login_existing_user_bad_password(test_client, test_user_bad_password, d
     }
     resp = test_client.post('/auth/login', data=user_input_data, follow_redirects=True)
     assert resp.status_code == 200
+    assert b'login' in resp.data
+    assert b'signup' in resp.data
+    assert b'profile' not in resp.data
+
 
     # if password is incorrect, stay on login page and flash error message
     assert resp.request.path == url_for('auth.login')

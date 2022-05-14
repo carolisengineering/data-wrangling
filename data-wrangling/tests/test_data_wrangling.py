@@ -17,19 +17,27 @@ def test_profile(test_client):
     assert resp.request.path == url_for('auth.login')
     assert b'login here' in resp.data
     assert b'log in to access this page' in resp.data
+    assert b'sign up' in resp.data
+    assert b'profile' not in resp.data
 
 def test_login(test_client):
     resp = test_client.get('/auth/login')
     assert resp.status_code == 200
     assert b'login here' in resp.data
+    assert b'sign up' in resp.data
+    assert b'profile' not in resp.data
 
 def test_signup(test_client):
     resp = test_client.get('/auth/signup')
     assert resp.status_code == 200
     assert b'sign up here' in resp.data
+    assert b'login' in resp.data
+    assert b'profile' not in resp.data
 
 def test_logout(test_client):
     resp = test_client.get('/auth/logout', follow_redirects=True)
     assert resp.status_code == 200
     assert resp.request.path == url_for('auth.login')
-    assert b'login here' in resp.data
+    assert b'login' in resp.data
+    assert b'sign up' in resp.data
+    assert b'profile' not in resp.data
