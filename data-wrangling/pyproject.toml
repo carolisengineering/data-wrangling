@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "data-wrangling"
-version = "0.1.0"
+version = "0.1.1"
 description = ""
 authors = ["carolisengineering <96889069+carolisengineering@users.noreply.github.com>"]
 
