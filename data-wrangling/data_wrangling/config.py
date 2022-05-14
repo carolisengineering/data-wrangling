@@ -1,10 +1,10 @@
-from constants import DB_NAME, DB_USERNAME, DB_PASSWORD, PRODUCTION_DATABASE_URL
+from constants import DB_NAME, DB_USERNAME, DB_PASSWORD, FLASK_SECRET_KEY, PRODUCTION_DATABASE_URL
 
 class Config(object):
     DEBUG = False
     TESTING = False
     CSRF_ENABLED = True
-    SECRET_KEY = 'secret-key'
+    SECRET_KEY = FLASK_SECRET_KEY
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 class ProductionConfig(Config):
