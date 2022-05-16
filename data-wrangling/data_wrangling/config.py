@@ -1,4 +1,10 @@
-from constants import DB_NAME, DB_USERNAME, DB_PASSWORD, FLASK_SECRET_KEY, PRODUCTION_DATABASE_URL
+from constants import (
+    DB_NAME, 
+    DB_USERNAME, 
+    DB_PASSWORD, 
+    FLASK_SECRET_KEY, 
+    PRODUCTION_DATABASE_URL,
+)
 
 class Config(object):
     DEBUG = False
