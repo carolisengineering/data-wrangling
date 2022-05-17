@@ -6,6 +6,10 @@
 	background-color: #DEB841;
 }
 
+.google-button {
+	margin-top: 10px;
+}
+
 .hero.is-primary {
 	background-color: #93C6D6;
 }

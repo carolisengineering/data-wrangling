@@ -7,6 +7,9 @@ from blueprints.auth.views import auth
 
 from db.db import db
 
+import os 
+os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
+
 
 def create_app():
     data_wrangling = Flask(__name__)
@@ -22,7 +25,7 @@ def create_app():
 
     @login_manager.user_loader
     def load_user(user_id):
-        return Users.query.get(int(user_id))
+        return Users.query.get(str(user_id))
     
     # register blueprints
     data_wrangling.register_blueprint(main)

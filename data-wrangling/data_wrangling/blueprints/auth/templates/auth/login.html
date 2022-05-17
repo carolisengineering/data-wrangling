@@ -33,6 +33,11 @@
             </div>
             <button class="button is-block is-info is-large is-fullwidth">login</button>
         </form>
+        <div class="google-button">
+            <form method="POST" action="{{ url_for('auth.login_with_google') }}">
+                <button class="button is-block is-info is-large is-fullwidth">login with google</button>
+            </form>
+        </div>
     </div>
 </div>
 {% endblock %}
