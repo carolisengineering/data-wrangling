@@ -11,10 +11,13 @@ poetry shell
 
 ## setup flask app
 
+- copy `sample.env` and save as `.env`
+- paste correct values for each environment variable in `.env`
+
 ```bash
-export FLASK_APP=data_wrangling
-export FLASK_DEBUG=1
+export $(xargs <.env)
 ```
+
 
 ## setup database
 
@@ -25,16 +28,19 @@ psql
 ```
 
 ```bash
-export DB_USERNAME=<your_database_username>
-export DB_PASSWORD=<your_database_password>
-
 python data_wrangling/db/db_setup.py
 ```
 
 
 ## run application
 
+```bash
+cd data_wrangling
 python -m flask run
-
+```
 
 ## test application
+
+```bash
+pytest tests
+```
